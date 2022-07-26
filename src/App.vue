@@ -1,6 +1,10 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal :header="header" :text="text" :theme="theme" />
+  <p>Selamat Datang</p>
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" :theme="theme" @close="toggleModal"/>
+  </div>
+  <button @click.alt="toggleModal">Buka Modal (alt)</button>
 </template>
 
 <script>
@@ -17,7 +21,13 @@ export default {
       title: 'Aplikasi Vue Pertama',
       header: "Ini adalah Header",
       theme: "sale",
-      text: "Ini adalah text"
+      text: "Ini adalah text",
+      showModal: false
+    }
+  },
+  methods:{
+    toggleModal() {
+      this.showModal = !this.showModal
     }
   }
 }
