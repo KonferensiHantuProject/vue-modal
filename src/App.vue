@@ -1,6 +1,6 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal />
+  <Modal :header="header" :text="text" :theme="theme" />
 </template>
 
 <script>
@@ -14,7 +14,10 @@ export default {
   },
   data () {
     return {
-      title: 'Aplikasi Vue Pertama'
+      title: 'Aplikasi Vue Pertama',
+      header: "Ini adalah Header",
+      theme: "sale",
+      text: "Ini adalah text"
     }
   }
 }
