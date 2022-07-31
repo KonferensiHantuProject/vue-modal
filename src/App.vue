@@ -1,7 +1,7 @@
 <template>
   <h1>{{ title }}</h1>
   <p>Selamat Datang</p>
-  <div v-if="showModal">
+  <teleport to=".modals" v-if="showModal">
     <Modal :theme="theme" @close="toggleModal">
       <template v-slot:links>
         <a href="#">Daftar Sekarang</a>
@@ -10,7 +10,17 @@
       <h1>Pass Slot</h1>
       <p>Ini adalah text</p>
     </Modal>
+  </teleport>
+
+  <!-- Second Modal -->
+  <div v-if="showModalTwo">
+    <Modal @close="toggleModalTwo">
+      <h1>Daftar</h1>
+      <p>Ini adalah text kedua</p>
+    </Modal>
   </div>
+
+  <button @click="toggleModalTwo">Buka Modal</button>
   <button @click.alt="toggleModal">Buka Modal (alt)</button>
 </template>
 
@@ -29,19 +39,23 @@ export default {
       header: "Ini adalah Header",
       theme: "sale",
       text: "Ini adalah text",
-      showModal: false
+      showModal: false,
+      showModalTwo: false
     }
   },
   methods:{
     toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     }
   }
 }
 </script>
 
 <style>
-#app {
+#app, .modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
