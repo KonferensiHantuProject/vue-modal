@@ -1,6 +1,6 @@
 # Modal Project
 
-## Project setup
+## Project Setup
 ```
 npm install
 ```
